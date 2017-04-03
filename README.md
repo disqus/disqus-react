@@ -12,7 +12,7 @@ Basic Usage
 
 On a typical article page with the comment count below the title, and discussion below the article body.
 
-```
+```js
 import React from 'react';
 import { DisqusThread, DisqusCommentCount } from 'disqus-react';
 
