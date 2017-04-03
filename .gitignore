@@ -1,3 +1,7 @@
+# Project
+build
+.vscode
+
 # Logs
 logs
 *.log

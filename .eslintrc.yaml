@@ -1,0 +1,213 @@
+env:
+    amd: true
+    shared-node-browser: true
+globals:
+    geturl: false
+    window: false
+plugins:
+        - react
+parser: babel-eslint
+rules:
+    strict: error
+    eqeqeq:
+        - error
+        - allow-null
+    block-scoped-var: error
+    wrap-iife:
+        - error
+        - any
+    valid-typeof: error
+    no-undef:
+        - error
+        - typeof: true
+    no-unused-vars:
+        - error
+        - args: all
+          # require and exports are ignored for the Simplified CommonJS wrapper, in which
+          # a module is wrapped with `define(function (require, exports, module) {...});`
+          argsIgnorePattern: "^_.+|^require$|^exports$"
+    no-implicit-globals: error
+    no-self-assign: error
+    no-eq-null: error
+    no-plusplus:
+        - error
+        - allowForLoopAfterthoughts: true
+    no-bitwise: error
+    no-use-before-define: warn
+    no-empty: error
+    no-new: error
+    no-throw-literal: error
+    no-loop-func: error
+    no-unmodified-loop-condition: warn
+    no-inner-declarations: error
+    no-array-constructor: error
+    no-cond-assign: error
+    no-console: error
+    no-control-regex: error
+    no-dupe-args: error
+    no-duplicate-case: error
+    no-empty-character-class: error
+    no-invalid-regexp: error
+    no-mixed-spaces-and-tabs: error
+    no-regex-spaces: error
+    array-callback-return: warn
+
+    # Style
+    indent: error
+    linebreak-style: error
+    semi: error
+    semi-spacing: error
+    block-spacing: error
+    id-length:
+        - error
+        - exceptions: ['$', '_', 'i', 'j']
+    no-irregular-whitespace: error
+    no-whitespace-before-property: error
+    template-curly-spacing: error
+    no-trailing-spaces: error
+    no-spaced-func: error
+    max-len: [1, 120, 4]
+    quotes:
+        - error
+        - single
+
+    keyword-spacing: error
+    space-before-blocks: error
+    space-before-function-paren:
+        - error
+        - anonymous: always
+          named: never
+    space-infix-ops: error
+    space-unary-ops: error
+    spaced-comment:
+        - error
+        - always
+        - exceptions: ['-', '=', '/']
+          markers: [',']
+    new-cap:
+        - error
+        - capIsNewExceptions:
+            - '$.Deferred'
+            - '$.Event'
+            - UniqueModel
+            - Create
+    new-parens: error
+    no-undef-init: error
+    no-extend-native: error
+    no-caller: error
+    no-native-reassign: error
+    # Use `self` for aliasing `this`
+    consistent-this:
+        - warn
+        - self
+
+    comma-dangle:
+        - error
+        - always-multiline
+    camelcase:
+        - error
+        - properties: never
+    curly:
+        - error
+        - multi-or-nest
+        - consistent
+    object-curly-spacing:
+        - error
+        - always
+    key-spacing: error
+    no-multi-spaces:
+        - error
+        - exceptions:
+            Property: false
+    no-shadow: warn
+    no-shadow-restricted-names: error
+    dot-notation: error
+    valid-jsdoc:
+        - error
+        - requireReturn: false
+          requireReturnDescription: false
+          prefer:
+            return: returns
+          preferType:
+            Any: '*'
+            String: string
+            Number: number
+            Boolean: boolean
+            Function: function
+            RegExp: regexp
+            date: Date
+            array: Array
+            object: Object
+            promise: Promise
+
+    # Moar Pedantic
+    operator-assignment: error
+    no-magic-numbers:
+        - warn
+        - ignore: [-1, 0, 1]
+          ignoreArrayIndexes: true
+    no-implicit-coercion: error
+    no-constant-condition: error
+    no-debugger: error
+    no-dupe-keys: error
+    no-extra-boolean-cast: error
+    no-extra-semi: error
+    no-ex-assign: error
+    no-func-assign: error
+    no-negated-in-lhs: error
+    no-negated-condition: error
+    no-obj-calls: error
+    no-sparse-arrays: error
+    no-unreachable: error
+    no-else-return: error
+    no-useless-call: error
+    no-useless-concat: error
+    no-useless-escape: error
+    use-isnan: error
+    default-case: warn
+    guard-for-in: warn
+    no-alert: warn
+    no-eval: error
+    no-fallthrough: error
+    no-case-declarations: error
+    no-implied-eval: error
+    no-labels: error
+    no-label-var: error
+    no-iterator: error
+    no-lone-blocks: error
+    no-multi-str: error
+    no-new-func: error
+    no-new-object: error
+    no-new-wrappers: error
+    no-octal: error
+    no-octal-escape: error
+    no-proto: error
+    no-redeclare: error
+    no-return-assign: warn
+    no-self-compare: error
+    no-script-url: error
+    no-sequences: error
+    no-unused-expressions: error
+    no-with: error
+    radix: error
+    no-catch-shadow: error
+    no-delete-var: error
+    comma-spacing: error
+    comma-style: error
+    no-unneeded-ternary: error
+    no-nested-ternary: error
+    no-lonely-if: error
+    no-extra-bind: error
+    no-extra-parens: warn
+    eol-last: error
+    dot-location:
+        - error
+        - property
+    one-var:
+        - error
+        - uninitialized: always
+          initialized: never
+
+    # React
+    react/jsx-uses-react: 1
+    react/jsx-uses-vars: 1
