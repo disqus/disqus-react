@@ -15,7 +15,7 @@ export class DisqusThread extends React.Component {
     }
 
     componentDidMount() {
-        this.reset();
+        this.loadInstance();
     }
 
     shouldComponentUpdate(nextProps) {
@@ -35,10 +35,10 @@ export class DisqusThread extends React.Component {
     }
 
     componentDidUpdate() {
-        this.reset();
+        this.loadInstance();
     }
 
-    reset() {
+    loadInstance() {
         if (DOC.getElementById('dsq-embed-scr')) {
             window.DISQUS.reset({
                 reload: true,
@@ -92,7 +92,7 @@ DisqusThread.propTypes = {
 
 export class DisqusCommentCount extends React.Component {
     componentDidMount() {
-        this.reset();
+        this.loadInstance();
     }
 
     shouldComponentUpdate(nextProps) {
@@ -112,10 +112,10 @@ export class DisqusCommentCount extends React.Component {
     }
 
     componentDidUpdate() {
-        this.reset();
+        this.loadInstance();
     }
 
-    reset() {
+    loadInstance() {
         if (DOC.getElementById('dsq-count-scr'))
             queueResetCount();
         else
