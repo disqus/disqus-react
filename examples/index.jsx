@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CommentEmbed, CommentCount } from 'disqus-react';
+import { DiscussionEmbed, CommentCount } from 'disqus-react';
 
 /* eslint-disable max-len */
 const ARTICLES = {
@@ -114,7 +114,7 @@ class Article extends React.Component {
                         }
                     )}
                 </div>
-                <CommentEmbed shortname={this.props.disqusShortname} config={threadConfig} />
+                <DiscussionEmbed shortname={this.props.disqusShortname} config={threadConfig} />
             </div>
         );
     }

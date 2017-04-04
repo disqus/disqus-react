@@ -16,7 +16,7 @@ On a typical article page with the comment count below the title, and discussion
 import React from 'react';
 import Disqus from 'disqus-react';
 // Alternatively, import specific members:
-// import { CommentEmbed, CommentCount } from 'disqus-react';
+// import { DiscussionEmbed, CommentCount } from 'disqus-react';
 
 class Article extends React.Component {
     render() {
@@ -34,13 +34,13 @@ class Article extends React.Component {
                     Comments
                 </Disqus.CommentCount>
                 <p>{this.props.article.body}</p>
-                <Disqus.CommentEmbed shortname={disqusShortname} config={disqusConfig} />
+                <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
             </div>
         );
     }
 }
 ```
 
-The `<DisqusThread />` component is limited to one instance in the entire DOM at a time. If multiple are included, only one will be loaded. The component will handle updates to both the `config` and `shortname` props and reload appropriately with the new discussion thread.
+The `<DiscussionEmbed />` component is limited to one instance in the entire DOM at a time. If multiple are included, only one will be loaded. The component will handle updates to both the `config` and `shortname` props and reload appropriately with the new discussion thread.
 
-The `<DisqusCommentCount />` component may include multiple instances on the same page with different `config` variables (e.g. an article list showing the comment count for all). However, all threads on the site must be under the same primary site `shortname`. If the component receives a new `shortname`, all instances will be reset with counts for threads matching the updated site.
+The `<CommentCount />` component may include multiple instances on the same page with different `config` variables (e.g. an article list showing the comment count for all). However, all threads on the site must be under the same primary site `shortname`. If the component receives a new `shortname`, all instances will be reset with counts for threads matching the updated site.

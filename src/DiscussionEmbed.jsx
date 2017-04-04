@@ -3,7 +3,7 @@ import { insertScript, removeScript } from './utils';
 
 const DOC = window.document;
 
-export class CommentEmbed extends React.Component {
+export class DiscussionEmbed extends React.Component {
     componentWillMount() {
         if (window.disqus_shortname && window.disqus_shortname !== this.props.shortname)
             this.cleanInstance();
@@ -79,7 +79,7 @@ export class CommentEmbed extends React.Component {
     }
 }
 
-CommentEmbed.propTypes = {
+DiscussionEmbed.propTypes = {
     shortname: React.PropTypes.string.isRequired,
     config: React.PropTypes.shape({
         identifier: React.PropTypes.string,
