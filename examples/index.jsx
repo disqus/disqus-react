@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { DisqusThread, DisqusCommentCount } from 'disqus-react';
+import { CommentEmbed, CommentCount } from 'disqus-react';
 
 /* eslint-disable max-len */
 const ARTICLES = {
@@ -59,29 +59,16 @@ class Home extends React.Component {
                             <h2>{data.title}</h2>
                             <p>{data.body}</p>
                             <a href={`#${data.id}`}>
-                                <DisqusCommentCount
+                                <CommentCount
                                     shortname={this.props.disqusShortname}
                                     config={countConfig}
                                 >
                                     comments
-                                </DisqusCommentCount>
+                                </CommentCount>
                             </a>
                         </div>
                     );
                 })}
-
-                <h3>Different Site</h3>
-                <div className="row gutters auto">
-                    <div className="col">
-
-                    </div>
-                    <div className="col">
-
-                    </div>
-                    <div className="col">
-
-                    </div>
-                </div>
             </div>
         );
     }
@@ -127,7 +114,7 @@ class Article extends React.Component {
                         }
                     )}
                 </div>
-                <DisqusThread shortname={this.props.disqusShortname} config={threadConfig} />
+                <CommentEmbed shortname={this.props.disqusShortname} config={threadConfig} />
             </div>
         );
     }

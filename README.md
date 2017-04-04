@@ -5,7 +5,7 @@ disqus-react is a component for integrating the Disqus comments embed and commen
 Installation
 ============
 
-Coming soon.
+Coming soon. This is still a work-in-progress and some things may change.
 
 Basic Usage
 ===========
@@ -14,7 +14,9 @@ On a typical article page with the comment count below the title, and discussion
 
 ```js
 import React from 'react';
-import { DisqusThread, DisqusCommentCount } from 'disqus-react';
+import Disqus from 'disqus-react';
+// Alternatively, import specific members:
+// import { CommentEmbed, CommentCount } from 'disqus-react';
 
 class Article extends React.Component {
     render() {
@@ -28,11 +30,11 @@ class Article extends React.Component {
         return (
             <div className="article">
                 <h1>{this.props.article.title}</h1>
-                <DisqusCommentCount shortname={disqusShortname} config={disqusConfig}>
+                <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
                     Comments
-                </DisqusCommentCount>
+                </Disqus.CommentCount>
                 <p>{this.props.article.body}</p>
-                <DisqusThread shortname={disqusShortname} config={disqusConfig} />
+                <Disqus.CommentEmbed shortname={disqusShortname} config={disqusConfig} />
             </div>
         );
     }
