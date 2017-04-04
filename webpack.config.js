@@ -1,5 +1,4 @@
 var path = require('path');
-var webpack = require('webpack');
 
 module.exports = {
     devtool: 'source-map',
@@ -7,8 +6,8 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            'disqus-react': path.resolve(__dirname, 'src/disqus.jsx'),
-        }
+            'disqus-react': path.resolve(__dirname, 'src/index.js'),
+        },
     },
     output: {
         path: path.resolve(__dirname, 'build'),
@@ -27,7 +26,7 @@ module.exports = {
             query: {
                 presets: [
                     'es2015',
-                    'react'
+                    'react',
                 ],
             },
         }],

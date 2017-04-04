@@ -1,6 +1,7 @@
 env:
     amd: true
     shared-node-browser: true
+    node: true
 globals:
     geturl: false
     window: false
