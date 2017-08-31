@@ -1,7 +1,11 @@
 {
   "name": "disqus-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "Official React components to embed Disqus discussions and comments.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanvalentin/disqus-react.git"
+  },
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +13,7 @@
     "build": "webpack --progress --colors"
   },
   "author": "Ryan Valentin",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
