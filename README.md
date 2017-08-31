@@ -5,7 +5,11 @@ disqus-react is a component for integrating the Disqus comments embed and commen
 Installation
 ============
 
-Coming soon. This is still a work-in-progress and some things may change.
+Using NPM:
+
+```bash
+$ npm install disqus-react
+```
 
 Basic Usage
 ===========
