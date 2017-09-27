@@ -6,11 +6,18 @@
     "type": "git",
     "url": "https://github.com/ryanvalentin/disqus-react.git"
   },
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "files": [
+    "dist",
+    "lib"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --hot --progress --colors",
-    "build": "webpack --progress --colors"
+    "start": "webpack-dev-server --config webpack.examples.config.js --hot --progress --colors",
+    "build:example": "webpack --config webpack.examples.config.js --progress --colors",
+    "build:dist": "webpack --config webpack.dist.config.js --progress --colors && uglifyjs dist/index.js -cm -o dist/index.min.js --source-map content=dist/index.js.map,url=index.min.js.map",
+    "build:babel": "babel src --out-dir lib --source-map",
+    "build": "npm run build:example && npm run build:dist && npm run build:babel"
   },
   "author": "Ryan Valentin",
   "license": "MIT",
@@ -19,6 +26,7 @@
     "react-dom": "^15.6.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.2.1",
     "babel-loader": "^6.4.1",
@@ -26,6 +34,7 @@
     "babel-preset-react": "^6.23.0",
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^6.10.3",
+    "uglify-js": "^3.1.2",
     "webpack": "^2.3.2",
     "webpack-dev-server": "^2.4.2"
   }
