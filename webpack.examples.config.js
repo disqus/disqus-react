@@ -23,12 +23,6 @@ module.exports = {
                 path.resolve(__dirname, 'src'),
                 path.resolve(__dirname, 'examples'),
             ],
-            query: {
-                presets: [
-                    'es2015',
-                    'react',
-                ],
-            },
         }],
     },
 };

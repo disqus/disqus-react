@@ -1,5 +1,7 @@
 # Project
 build
+dist
+lib
 .vscode
 
 # Logs
