@@ -1,6 +1,6 @@
 {
   "name": "disqus-react",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Official React components to embed Disqus discussions and comments.",
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
     "build:example": "webpack --config webpack.examples.config.js --progress --colors",
     "build:dist": "webpack --config webpack.dist.config.js --progress --colors && uglifyjs dist/index.js -cm -o dist/index.min.js --source-map content=dist/index.js.map,url=index.min.js.map",
     "build:babel": "babel src --out-dir lib --source-map",
-    "build": "npm run build:example && npm run build:dist && npm run build:babel"
+    "build": "npm run build:example && npm run build:dist && npm run build:babel",
+    "prepublish": "npm run build"
   },
   "author": "Ryan Valentin",
   "license": "MIT",
