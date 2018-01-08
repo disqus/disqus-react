@@ -6,7 +6,7 @@ export class CommentEmbed extends React.Component {
     getSrc() {
         const post = Number(this.props.commentId).toString(RADIX_BASE);
         const parentParam = this.props.showParentComment ? '1' : '0';
-        const mediaParam = this.props.showMedia ? '1' : '0'
+        const mediaParam = this.props.showMedia ? '1' : '0';
 
         return `https://embed.disqus.com/p/${post}?p=${parentParam}&m=${mediaParam}`;
     }
@@ -20,7 +20,6 @@ export class CommentEmbed extends React.Component {
                 seamless="seamless"
                 scrolling="no"
                 frameBorder="0"
-                allowTransparency="true"
             />
         );
     }
