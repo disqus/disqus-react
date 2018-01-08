@@ -26,18 +26,6 @@ export class CommentEmbed extends React.Component {
     }
 }
 
-CommentEmbed.propTypes = {
-    commentId: React.PropTypes.oneOfType([
-        React.PropTypes.number,
-        React.PropTypes.string,
-    ]).isRequired,
-
-    showMedia: React.PropTypes.bool,
-    showParentComment: React.PropTypes.bool,
-    width: React.PropTypes.number,
-    height: React.PropTypes.number,
-};
-
 CommentEmbed.defaultProps = {
     showMedia: true,
     showParentComment: true,

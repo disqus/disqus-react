@@ -59,12 +59,3 @@ export class CommentCount extends React.Component {
         );
     }
 }
-
-CommentCount.propTypes = {
-    shortname: React.PropTypes.string.isRequired,
-    config: React.PropTypes.shape({
-        identifier: React.PropTypes.string,
-        url: React.PropTypes.string,
-    }).isRequired,
-    children: React.PropTypes.node,
-};

@@ -78,14 +78,3 @@ export class DiscussionEmbed extends React.Component {
         );
     }
 }
-
-DiscussionEmbed.propTypes = {
-    shortname: React.PropTypes.string.isRequired,
-    config: React.PropTypes.shape({
-        identifier: React.PropTypes.string,
-        url: React.PropTypes.string,
-        title: React.PropTypes.string,
-
-        onNewComment: React.PropTypes.func,
-    }).isRequired,
-};

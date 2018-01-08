@@ -81,10 +81,6 @@ class Home extends React.Component {
     }
 }
 
-Home.propTypes = {
-    disqusShortname: React.PropTypes.string.isRequired,
-};
-
 class Article extends React.Component {
     handleNewComment(comment) {
         window.console.info(`New comment posted with id ${comment.id} and message: ${comment.text}`);
@@ -126,11 +122,6 @@ class Article extends React.Component {
         );
     }
 }
-
-Article.propTypes = {
-    id: React.PropTypes.string.isRequired,
-    disqusShortname: React.PropTypes.string.isRequired,
-};
 
 class App extends React.Component {
     constructor(props) {
