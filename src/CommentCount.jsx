@@ -6,8 +6,6 @@ const queueResetCount = debounce(() => {
         window.DISQUSWIDGETS.getCount({ reset: true });
 }, 300, false); // eslint-disable-line no-magic-numbers
 
-const DOC = window.document;
-
 export class CommentCount extends React.Component {
     componentDidMount() {
         this.loadInstance();
@@ -34,14 +32,16 @@ export class CommentCount extends React.Component {
     }
 
     loadInstance() {
-        if (DOC.getElementById('dsq-count-scr'))
+        const doc = window.document;
+        if (doc.getElementById('dsq-count-scr'))
             queueResetCount();
         else
-            insertScript(`https://${this.props.shortname}.disqus.com/count.js`, 'dsq-count-scr', DOC.body);
+            insertScript(`https://${this.props.shortname}.disqus.com/count.js`, 'dsq-count-scr', doc.body);
     }
 
     cleanInstance() {
-        removeScript('dsq-count-scr', DOC.body);
+        const body = window.document.body;
+        removeScript('dsq-count-scr', body);
 
         // count.js only reassigns this window object if it's undefined.
         window.DISQUSWIDGETS = undefined;

@@ -1,11 +1,9 @@
 import React from 'react';
 import { insertScript, removeScript } from './utils';
 
-const DOC = window.document;
-
 export class DiscussionEmbed extends React.Component {
     componentWillMount() {
-        if (window.disqus_shortname && window.disqus_shortname !== this.props.shortname)
+        if (window && window.disqus_shortname && window.disqus_shortname !== this.props.shortname)
             this.cleanInstance();
     }
 
@@ -34,7 +32,8 @@ export class DiscussionEmbed extends React.Component {
     }
 
     loadInstance() {
-        if (DOC.getElementById('dsq-embed-scr')) {
+        const doc = window.document;
+        if (doc.getElementById('dsq-embed-scr')) {
             window.DISQUS.reset({
                 reload: true,
                 config: this.getDisqusConfig(this.props.config),
@@ -42,19 +41,20 @@ export class DiscussionEmbed extends React.Component {
         } else {
             window.disqus_config = this.getDisqusConfig(this.props.config);
             window.disqus_shortname = this.props.shortname;
-            insertScript(`https://${this.props.shortname}.disqus.com/embed.js`, 'dsq-embed-scr', DOC.body);
+            insertScript(`https://${this.props.shortname}.disqus.com/embed.js`, 'dsq-embed-scr', doc.body);
         }
     }
 
     cleanInstance() {
-        removeScript('dsq-embed-scr', DOC.body);
+        const doc = window.document;
+        removeScript('dsq-embed-scr', doc.body);
         window.DISQUS.reset({});
         try {
             delete window.DISQUS;
         } catch (error) {
             window.DISQUS = undefined;
         }
-        const disqusThread = DOC.getElementById('disqus_thread');
+        const disqusThread = doc.getElementById('disqus_thread');
         if (disqusThread) {
             while (disqusThread.hasChildNodes())
                 disqusThread.removeChild(disqusThread.firstChild);

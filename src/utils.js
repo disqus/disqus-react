@@ -1,7 +1,5 @@
-const DOC = window.document;
-
 export function insertScript(src, id, parentElement) {
-    const script = DOC.createElement('script');
+    const script = window.document.createElement('script');
     script.async = true;
     script.src = src;
     script.id = id;
@@ -11,7 +9,7 @@ export function insertScript(src, id, parentElement) {
 }
 
 export function removeScript(id, parentElement) {
-    const script = DOC.getElementById(id);
+    const script = window.document.getElementById(id);
     if (script)
         parentElement.removeChild(script);
 }
