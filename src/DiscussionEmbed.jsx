@@ -3,7 +3,7 @@ import { insertScript, removeScript } from './utils';
 
 export class DiscussionEmbed extends React.Component {
     componentWillMount() {
-        if (window && window.disqus_shortname && window.disqus_shortname !== this.props.shortname)
+        if (typeof window !== 'undefined' && window.disqus_shortname && window.disqus_shortname !== this.props.shortname)
             this.cleanInstance();
     }
 
