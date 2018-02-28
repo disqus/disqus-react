@@ -33,7 +33,7 @@ export class DiscussionEmbed extends React.Component {
 
     loadInstance() {
         const doc = window.document;
-        if (doc.getElementById('dsq-embed-scr')) {
+        if (window && window.DISQUS && doc.getElementById('dsq-embed-scr')) {
             window.DISQUS.reset({
                 reload: true,
                 config: this.getDisqusConfig(this.props.config),
@@ -48,7 +48,9 @@ export class DiscussionEmbed extends React.Component {
     cleanInstance() {
         const doc = window.document;
         removeScript('dsq-embed-scr', doc.body);
-        window.DISQUS.reset({});
+        if (window && window.DISQUS) {
+            window.DISQUS.reset({});
+        }
         try {
             delete window.DISQUS;
         } catch (error) {
