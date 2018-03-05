@@ -1,10 +1,10 @@
 {
   "name": "disqus-react",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Official React components to embed Disqus discussions and comments.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ryanvalentin/disqus-react.git"
+    "url": "https://github.com/disqus/disqus-react.git"
   },
   "main": "lib/index.js",
   "files": [
