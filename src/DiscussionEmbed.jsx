@@ -48,9 +48,9 @@ export class DiscussionEmbed extends React.Component {
     cleanInstance() {
         const doc = window.document;
         removeScript('dsq-embed-scr', doc.body);
-        if (window && window.DISQUS) {
+        if (window && window.DISQUS)
             window.DISQUS.reset({});
-        }
+
         try {
             delete window.DISQUS;
         } catch (error) {
