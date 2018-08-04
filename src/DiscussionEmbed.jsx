@@ -17,7 +17,7 @@ export class DiscussionEmbed extends React.Component {
 
         const nextConfig = nextProps.config;
         const config = this.props.config;
-        if (nextConfig.url === config.url || nextConfig.identifier === config.identifier)
+        if (nextConfig.url === config.url && nextConfig.identifier === config.identifier)
             return false;
         return true;
     }
