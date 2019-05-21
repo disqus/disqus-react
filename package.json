@@ -7,9 +7,11 @@
     "url": "https://github.com/disqus/disqus-react.git"
   },
   "main": "lib/index.js",
+  "types": "types/index.d.ts",
   "files": [
     "dist",
-    "lib"
+    "lib",
+    "types"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
