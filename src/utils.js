@@ -1,4 +1,6 @@
 export function insertScript(src, id, parentElement) {
+    if (window.document.getElementById(id))
+        return;
     const script = window.document.createElement('script');
     script.async = true;
     script.src = src;
