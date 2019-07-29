@@ -1,9 +1,10 @@
 import React from 'react';
-import { insertScript, removeScript } from './utils';
+import { insertScript, removeScript, shallowComparison } from './utils';
 
 export class DiscussionEmbed extends React.Component {
     componentWillMount() {
-        if (typeof window !== 'undefined' && window.disqus_shortname && window.disqus_shortname !== this.props.shortname)
+        if (typeof window !== 'undefined' && window.disqus_shortname &&
+            window.disqus_shortname !== this.props.shortname)
             this.cleanInstance();
     }
 
@@ -12,14 +13,9 @@ export class DiscussionEmbed extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        if (this.props.shortname !== nextProps.shortname)
-            return true;
-
-        const nextConfig = nextProps.config;
-        const config = this.props.config;
-        if (nextConfig.url === config.url && nextConfig.identifier === config.identifier)
+        if (this.props === nextProps)
             return false;
-        return true;
+        return shallowComparison(this.props, nextProps);
     }
 
     componentWillUpdate(nextProps) {

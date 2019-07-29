@@ -1,5 +1,5 @@
 import React from 'react';
-import { insertScript, removeScript, debounce } from './utils';
+import { insertScript, removeScript, debounce, shallowComparison } from './utils';
 
 const queueResetCount = debounce(() => {
     if (window.DISQUSWIDGETS)
@@ -12,14 +12,9 @@ export class CommentCount extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        if (this.props.shortname !== nextProps.shortname)
-            return true;
-
-        const nextConfig = nextProps.config;
-        const config = this.props.config;
-        if (nextConfig.url === config.url && nextConfig.identifier === config.identifier)
+        if (this.props === nextProps)
             return false;
-        return true;
+        return shallowComparison(this.props, nextProps);
     }
 
     componentWillUpdate(nextProps) {
