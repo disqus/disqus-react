@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function insertScript(src, id, parentElement) {
     const script = window.document.createElement('script');
     script.async = true;
@@ -34,4 +36,25 @@ export function debounce(func, wait, runOnFirstCall) {
         if (callNow)
             func.apply(context, args);
     };
+}
+
+export function isReactElement(element) {
+    if (React.isValidElement(element)) {
+        return true;
+    } else if (Array.isArray(element)) {
+        return element.some((value) =>
+            React.isValidElement(value)
+        );
+    }
+    return false;
+}
+
+export function shallowComparison(currentProps, nextProps) {
+    // Perform a comparison of all props, excluding React Elements, to prevent unnecessary updates
+    const propNames = new Set(Object.keys(currentProps), Object.keys(nextProps)); // eslint-disable-line no-undef
+    for (const name of propNames) {
+        if (currentProps[name] !== nextProps[name] && !isReactElement(currentProps[name]))
+            return true;
+    }
+    return false;
 }
