@@ -62,20 +62,4 @@ The `<CommentEmbed />` component may include multiple instances on the same page
 Troubleshooting
 ===========
 
-Make sure that the `url` property in `DisqusProps.config` 
-
-```ts
-interface DisqusProps {
-  shortname: string;
-  config: {
-    url: string; // must match `Website URL`
-    identifier: string;
-    title: string;
-  };
-}
-
-```
-
-matches the `Website URL` found at `https://your-project-shortname.disqus.com/admin/settings/general/`
-
-![Admin panel](https://i.imgur.com/nTTdGWD.png)
+Make sure that `disqusProps.config.url` must match `Website URL` found at `https://your-project-shortname.disqus.com/admin/settings/general/`
