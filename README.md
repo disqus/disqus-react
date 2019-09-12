@@ -58,3 +58,8 @@ The `<DiscussionEmbed />` component is limited to one instance in the entire DOM
 The `<CommentCount />` component may include multiple instances on the same page with different `config` variables (e.g. an article list showing the comment count for all). However, all threads on the site must be under the same primary site `shortname`. If the component receives a new `shortname`, all instances will be reset with counts for threads matching the updated site.  
 
 The `<CommentEmbed />` component may include multiple instances on the same page with different `commentId` variables. Additionally, this component does not require that the embedded comment be under the same primary site `shortname`.  
+
+Troubleshooting
+===========
+
+Make sure that `disqusProps.config.url` must match `Website URL` found at `https://your-project-shortname.disqus.com/admin/settings/general/`
