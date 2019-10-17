@@ -2,13 +2,11 @@ import React from 'react';
 import { insertScript, removeScript, shallowComparison } from './utils';
 
 export class DiscussionEmbed extends React.Component {
-    componentWillMount() {
+
+    componentDidMount() {
         if (typeof window !== 'undefined' && window.disqus_shortname &&
             window.disqus_shortname !== this.props.shortname)
             this.cleanInstance();
-    }
-
-    componentDidMount() {
         this.loadInstance();
     }
 
@@ -18,12 +16,9 @@ export class DiscussionEmbed extends React.Component {
         return shallowComparison(this.props, nextProps);
     }
 
-    componentWillUpdate(nextProps) {
+    componentDidUpdate(nextProps) {
         if (this.props.shortname !== nextProps.shortname)
             this.cleanInstance();
-    }
-
-    componentDidUpdate() {
         this.loadInstance();
     }
 
