@@ -18,11 +18,14 @@ export class CommentCount extends React.Component {
     }
 
     componentWillUpdate(nextProps) {
+        console.log('componentWillUpdate')
         if (this.props.shortname !== nextProps.shortname)
             this.cleanInstance();
     }
 
     componentDidUpdate() {
+      // if (this.props.shortname !== nextProps.shortname)
+      //       this.cleanInstance();
         this.loadInstance();
     }
 
