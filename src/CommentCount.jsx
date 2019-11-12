@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { insertScript, removeScript, debounce, shallowComparison } from './utils';
 
 const queueResetCount = debounce(() => {
@@ -51,3 +52,12 @@ export class CommentCount extends React.Component {
         );
     }
 }
+
+CommentCount.propTypes = {
+    shortname: PropTypes.string.isRequired,
+    config: PropTypes.shape({
+        identifier: PropTypes.string,
+        url: PropTypes.string,
+        title: PropTypes.string,
+    }).isRequired,
+};

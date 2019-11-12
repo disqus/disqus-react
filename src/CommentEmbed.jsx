@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const RADIX_BASE = 36;
 
@@ -30,4 +31,12 @@ CommentEmbed.defaultProps = {
     showParentComment: true,
     width: 420,
     height: 320,
+};
+
+CommentEmbed.propTypes = {
+    commentId: PropTypes.string.isRequired,
+    showMedia: PropTypes.bool,
+    showParentComment: PropTypes.bool,
+    width: PropTypes.number,
+    height: PropTypes.number,
 };

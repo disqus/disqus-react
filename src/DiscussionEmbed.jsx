@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { insertScript, removeScript, shallowComparison } from './utils';
 
 export class DiscussionEmbed extends React.Component {
@@ -71,3 +72,13 @@ export class DiscussionEmbed extends React.Component {
         );
     }
 }
+
+DiscussionEmbed.propTypes = {
+    shortname: PropTypes.string.isRequired,
+    config: PropTypes.shape({
+        identifier: PropTypes.string,
+        url: PropTypes.string,
+        title: PropTypes.string,
+        onNewComment: PropTypes.func,
+    }).isRequired,
+};
