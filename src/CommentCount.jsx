@@ -17,12 +17,9 @@ export class CommentCount extends React.Component {
         return shallowComparison(this.props, nextProps);
     }
 
-    componentWillUpdate(nextProps) {
-        if (this.props.shortname !== nextProps.shortname)
+    componentDidUpdate(prevProps) {
+        if (this.props.shortname !== prevProps.shortname)
             this.cleanInstance();
-    }
-
-    componentDidUpdate() {
         this.loadInstance();
     }
 
