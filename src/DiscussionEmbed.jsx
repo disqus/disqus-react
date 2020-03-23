@@ -2,6 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { insertScript, removeScript, shallowComparison } from './utils';
 
+const callbacks = [
+    'preData',
+    'preInit',
+    'onInit',
+    'onReady',
+    'afterRender',
+    'preReset',
+    'onIdentify',
+    'beforeComment',
+    'onNewComment',
+    'onPaginate',
+];
+
 export class DiscussionEmbed extends React.Component {
 
     componentDidMount() {
@@ -60,9 +73,12 @@ export class DiscussionEmbed extends React.Component {
             this.page.identifier = config.identifier;
             this.page.url = config.url;
             this.page.title = config.title;
-            this.callbacks.onNewComment = [
-                config.onNewComment,
-            ];
+
+            callbacks.forEach(callbackName => {
+                this.callbacks[callbackName] = [
+                    config[callbackName],
+                ];
+            });
         };
     }
 
@@ -79,6 +95,15 @@ DiscussionEmbed.propTypes = {
         identifier: PropTypes.string,
         url: PropTypes.string,
         title: PropTypes.string,
+        preData: PropTypes.func,
+        preInit: PropTypes.func,
+        onInit: PropTypes.func,
+        onReady: PropTypes.func,
+        afterRender: PropTypes.func,
+        preReset: PropTypes.func,
+        onIdentify: PropTypes.func,
+        beforeComment: PropTypes.func,
         onNewComment: PropTypes.func,
+        onPaginate: PropTypes.func,
     }).isRequired,
 };
