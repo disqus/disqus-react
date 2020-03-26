@@ -1,33 +1,38 @@
 import React from 'react';
-import { insertScript, removeScript } from './utils';
+import PropTypes from 'prop-types';
+import { insertScript, removeScript, shallowComparison } from './utils';
+
+const callbacks = [
+    'preData',
+    'preInit',
+    'onInit',
+    'onReady',
+    'afterRender',
+    'preReset',
+    'onIdentify',
+    'beforeComment',
+    'onNewComment',
+    'onPaginate',
+];
 
 export class DiscussionEmbed extends React.Component {
-    componentWillMount() {
-        if (typeof window !== 'undefined' && window.disqus_shortname && window.disqus_shortname !== this.props.shortname)
-            this.cleanInstance();
-    }
 
     componentDidMount() {
+        if (typeof window !== 'undefined' && window.disqus_shortname &&
+            window.disqus_shortname !== this.props.shortname)
+            this.cleanInstance();
         this.loadInstance();
     }
 
     shouldComponentUpdate(nextProps) {
-        if (this.props.shortname !== nextProps.shortname)
-            return true;
-
-        const nextConfig = nextProps.config;
-        const config = this.props.config;
-        if (nextConfig.url === config.url || nextConfig.identifier === config.identifier)
+        if (this.props === nextProps)
             return false;
-        return true;
+        return shallowComparison(this.props, nextProps);
     }
 
-    componentWillUpdate(nextProps) {
+    componentDidUpdate(nextProps) {
         if (this.props.shortname !== nextProps.shortname)
             this.cleanInstance();
-    }
-
-    componentDidUpdate() {
         this.loadInstance();
     }
 
@@ -70,9 +75,12 @@ export class DiscussionEmbed extends React.Component {
             this.page.title = config.title;
             this.page.remote_auth_s3 = config.remoteAuthS3;
             this.page.api_key = config.apiKey;
-            this.callbacks.onNewComment = [
-                config.onNewComment,
-            ];
+
+            callbacks.forEach(callbackName => {
+                this.callbacks[callbackName] = [
+                    config[callbackName],
+                ];
+            });
         };
     }
 
@@ -82,3 +90,22 @@ export class DiscussionEmbed extends React.Component {
         );
     }
 }
+
+DiscussionEmbed.propTypes = {
+    shortname: PropTypes.string.isRequired,
+    config: PropTypes.shape({
+        identifier: PropTypes.string,
+        url: PropTypes.string,
+        title: PropTypes.string,
+        preData: PropTypes.func,
+        preInit: PropTypes.func,
+        onInit: PropTypes.func,
+        onReady: PropTypes.func,
+        afterRender: PropTypes.func,
+        preReset: PropTypes.func,
+        onIdentify: PropTypes.func,
+        beforeComment: PropTypes.func,
+        onNewComment: PropTypes.func,
+        onPaginate: PropTypes.func,
+    }).isRequired,
+};
