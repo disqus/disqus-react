@@ -86,7 +86,7 @@ export class DiscussionEmbed extends React.Component {
 
     render() {
         return (
-            <div id="disqus_thread"></div>
+            <div {...this.props} id="disqus_thread"></div>
         );
     }
 }
