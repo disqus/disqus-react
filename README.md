@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/disqus-react.svg)](https://badge.fury.io/js/disqus-react "View this package on npm")  
 
-A package for integrating the Disqus comments embed and comment count into React applications.  
+A package for integrating [Disqus](http://disqus.com/) services into React applications.  
 
 ## Installation  
 
