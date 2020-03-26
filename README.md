@@ -9,12 +9,15 @@ A package for integrating the Disqus comments embed and comment count into React
 Using [npm](https://www.npmjs.com/):  
 
 ```bash
-$ npm install disqus-react
+$ npm install --save disqus-react
+```
+
+Using [yarn](https://yarnpkg.com/):
+```bash
+$ yarn add disqus-react
 ```
 
 ## Usage  
-
-On a typical article page with the comment count below the title, as well as an embedded comment and discussion below the article body.  
 
 ### DiscussionEmbed  
 
@@ -81,4 +84,4 @@ Multiple instances of this component may be include on the same page with differ
 
 ## Contributing  
 
-If you'd like to contribute to this package feel free to submit a bug report, feature request, or pull request.  
+If you'd like to contribute to this package feel free to submit a bug report, feature request, or pull request. Though we would ask that you first read through the [contributing guidelines](https://github.com/disqus/disqus-react/blob/master/docs/CONTRIBUTING.md).
