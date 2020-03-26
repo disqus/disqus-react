@@ -34,7 +34,13 @@ class Article extends React.Component {
         return (
             <div className="article">
                 <h1>{this.props.article.title}</h1>
-                <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
+                <Disqus.CommentCount 
+                    shortname={disqusShortname} 
+                    config={{
+                        ...disqusConfig, 
+                        url: `${disqusConfig.url}#disqus_thread`
+                    }}
+                >
                     Comments
                 </Disqus.CommentCount>
                 
