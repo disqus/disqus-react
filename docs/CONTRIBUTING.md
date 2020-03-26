@@ -51,7 +51,7 @@ Before creating bug reports, please check [this list](#before-submitting-a-bug-r
 
 #### Before Submitting A Bug Report
 
-* **Check the [FAQs on the forum](https://help.disqus.com/en/)** for a list of common questions and problems.
+* **Check the [FAQ](https://github.com/disqus/disqus-react/wiki/Frequently-Asked-Questions)** for a list of common questions and problems.
 * **Perform a [cursory search](https://github.com/disqus/disqus-react/issues?utf8=%E2%9C%93&q=is%3Aissue)** to see if the problem has already been reported. If it has **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
 
 #### How Do I Submit A (Good) Bug Report?
@@ -114,22 +114,8 @@ While the prerequisites above must be satisfied prior to having your pull reques
 
 ### JavaScript Styleguide
 
-All JavaScript must adhere to [JavaScript Standard Style](https://standardjs.com/).
+All JavaScript must adhere to the included [ESlint config](https://github.com/disqus/disqus-react/blob/master/.eslintrc.yaml)
 
-* Prefer the object spread operator (`{...anotherObj}`) to `Object.assign()`
-* Inline `export`s with expressions whenever possible
-  ```js
-  // Use this:
-  export default class ClassName {
-
-  }
-
-  // Instead of:
-  class ClassName {
-
-  }
-  export default ClassName
-  ```
 * Place requires in the following order:
     * Built-in Node Modules (such as `path`)
     * Built-in Modules
