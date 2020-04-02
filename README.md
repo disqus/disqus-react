@@ -29,9 +29,11 @@ import { DiscussionEmbed } from 'disqus-react';
 <DiscussionEmbed
     shortname='example'
     config={
-        url: this.props.article.url,
-        identifier: this.props.article.id,
-        title: this.props.article.title,
+        {
+            url: this.props.article.url,
+            identifier: this.props.article.id,
+            title: this.props.article.title,
+        }
     }
 />
 ```
@@ -49,9 +51,11 @@ import { CommentCount } from 'disqus-react';
 <Disqus.CommentCount
     shortname='example'
     config={
-        url: this.props.article.url,
-        identifier: this.props.article.id,
-        title: this.props.article.title,
+        {
+            url: this.props.article.url,
+            identifier: this.props.article.id,
+            title: this.props.article.title,
+        }
     }
 >
     {/* Placeholder Text */}
