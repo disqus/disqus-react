@@ -73,6 +73,7 @@ export class DiscussionEmbed extends React.Component {
             this.page.identifier = config.identifier;
             this.page.url = config.url;
             this.page.title = config.title;
+            this.page.category_id = config.categoryID;
             this.page.remote_auth_s3 = config.remoteAuthS3;
             this.page.api_key = config.apiKey;
             if (config.language)
@@ -100,6 +101,7 @@ DiscussionEmbed.propTypes = {
         url: PropTypes.string,
         title: PropTypes.string,
         language: PropTypes.string,
+        categoryID: PropTypes.string,
         preData: PropTypes.func,
         preInit: PropTypes.func,
         onInit: PropTypes.func,
