@@ -7,6 +7,7 @@ interface DisqusProps {
     identifier: string;
     title: string;
     language: string;
+    categoryID?: string;
   };
 }
 
