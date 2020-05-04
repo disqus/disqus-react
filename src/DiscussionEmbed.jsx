@@ -75,6 +75,8 @@ export class DiscussionEmbed extends React.Component {
             this.page.title = config.title;
             this.page.remote_auth_s3 = config.remoteAuthS3;
             this.page.api_key = config.apiKey;
+            if (config.language)
+                this.language = config.language;
 
             callbacks.forEach(callbackName => {
                 this.callbacks[callbackName] = [
@@ -97,6 +99,7 @@ DiscussionEmbed.propTypes = {
         identifier: PropTypes.string,
         url: PropTypes.string,
         title: PropTypes.string,
+        language: PropTypes.string,
         preData: PropTypes.func,
         preInit: PropTypes.func,
         onInit: PropTypes.func,
