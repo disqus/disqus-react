@@ -6,6 +6,7 @@ interface DisqusProps {
     url: string;
     identifier: string;
     title: string;
+    language: string;
   };
 }
 

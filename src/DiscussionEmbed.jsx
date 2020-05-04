@@ -99,6 +99,7 @@ DiscussionEmbed.propTypes = {
         identifier: PropTypes.string,
         url: PropTypes.string,
         title: PropTypes.string,
+        language: PropTypes.string,
         preData: PropTypes.func,
         preInit: PropTypes.func,
         onInit: PropTypes.func,
