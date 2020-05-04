@@ -102,6 +102,8 @@ DiscussionEmbed.propTypes = {
         title: PropTypes.string,
         language: PropTypes.string,
         categoryID: PropTypes.string,
+        remoteAuthS3: PropTypes.string,
+        apiKey: PropTypes.string,
         preData: PropTypes.func,
         preInit: PropTypes.func,
         onInit: PropTypes.func,
