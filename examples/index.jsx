@@ -114,8 +114,8 @@ class Article extends React.Component {
                                     </a>
                                 </div>
                             );
-                        }
-                    )}
+                        })
+                    }
                 </div>
                 <DiscussionEmbed shortname={this.props.disqusShortname} config={threadConfig} />
             </div>
@@ -155,7 +155,7 @@ class App extends React.Component {
                 {this.state.articleId ?
                     <Article id={this.state.articleId} disqusShortname={this.state.disqusShortname} />
                     : <Home disqusShortname={this.state.disqusShortname} />
-                 }
+                }
                 <button onClick={this.changeShortname.bind(this)}>Change shortname</button>
             </div>
         );
