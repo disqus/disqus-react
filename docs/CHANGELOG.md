@@ -1,6 +1,16 @@
 # Change Log
 
-## [1.0.8](https://github.com/disqus/disqus-react/releases/tag/1.0.7)  
+## [1.0.9](https://github.com/disqus/disqus-react/releases/tag/1.0.9)  
+  * Updated README.md examples
+  * Added language configuration support for DiscussionEmbed component
+  * Added `category_id` support
+  * Added missing prop-type validations
+  * Updated typescript definitions
+  * Fixed issues with example site
+
+----
+
+## [1.0.8](https://github.com/disqus/disqus-react/releases/tag/1.0.8)  
   * Updated package documentation
   * Added support for rest props to `DiscussionEmbed`
   * Added config params for SSO
