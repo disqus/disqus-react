@@ -27,7 +27,7 @@ interface DiscussionEmbedProps {
   config: DiscussionEmbedConfig;
 };
 
-interface CommentCountProps extends DisqusProps {
+interface CommentCountProps extends DiscussionEmbedProps {
   shortname: string,
   config: DisqusConfig;
   children?: React.ReactNode;
