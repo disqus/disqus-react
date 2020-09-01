@@ -1,6 +1,6 @@
 {
   "name": "disqus-react",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Official React components to embed Disqus discussions and comments.",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "build": "npm run build:example && npm run build:dist && npm run build:babel",
     "prepublish": "npm run build",
     "publish": "cd lib && npm publish . && cd ..",
-    "postpublish" : "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
+    "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
   },
   "author": "Ryan Valentin",
   "license": "MIT",
