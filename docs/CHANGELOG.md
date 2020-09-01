@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.0.10](https://github.com/disqus/disqus-react/releases/tag/1.0.10)  
+  * Fixed issue with typescript definitions
+  * Modified the `shallowComparison` function to prevent false-positives
+  * Bumped lodash from 4.17.15 to 4.17.19
+  * Bumped elliptic from 6.5.2 to 6.5.3
+
+----
+
 ## [1.0.9](https://github.com/disqus/disqus-react/releases/tag/1.0.9)  
   * Updated README.md examples
   * Added language configuration support for DiscussionEmbed component
