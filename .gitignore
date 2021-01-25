@@ -3,6 +3,7 @@ build
 dist
 lib
 .vscode
+.nvmrc
 
 # Logs
 logs
