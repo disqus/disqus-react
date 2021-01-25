@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.0.11](https://github.com/disqus/disqus-react/releases/tag/1.0.11)  
+  * Added React v17.x as peerDependencies
+  * Bumped ini from 1.3.5 to 1.3.7
+  * Bumped http-proxy from 1.18.0 to 1.18.1
+
+----
+
 ## [1.0.10](https://github.com/disqus/disqus-react/releases/tag/1.0.10)  
   * Fixed issue with typescript definitions
   * Modified the `shallowComparison` function to prevent false-positives
