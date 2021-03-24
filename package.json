@@ -14,12 +14,12 @@
     "types"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.examples.config.js --hot --progress --colors",
-    "build:example": "webpack --config webpack.examples.config.js --progress --colors",
-    "build:dist": "webpack --config webpack.dist.config.js --progress --colors && uglifyjs dist/index.js -cm -o dist/index.min.js --source-map content=dist/index.js.map,url=index.min.js.map",
+    "start": "webpack-dev-server --config config/webpack.examples.config.js --hot --progress --colors",
+    "build:example": "webpack --config config/webpack.examples.config.js --progress --colors",
+    "build:dist": "webpack --config config/webpack.dist.config.js --progress --colors && uglifyjs dist/index.js -cm -o dist/index.min.js --source-map content=dist/index.js.map,url=index.min.js.map",
     "build:babel": "babel src --out-dir lib",
     "build": "npm run build:example && npm run build:dist && npm run build:babel",
+    "test": "jest --config=./config/jest.config.js",
     "prepublish": "npm run build",
     "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
   },
@@ -32,12 +32,17 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
+    "@babel/plugin-transform-spread": "^7.10.1",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
+    "@testing-library/jest-dom": "^5.0.0",
+    "@testing-library/react": "^9.4.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.1.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0",
+    "jest": "^24.9.0",
     "prop-types": "^15.7.2",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
@@ -45,5 +50,14 @@
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
-  }
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "jest": {
+    "roots": [
+      "src"
+    ]
+  },
+  "dependencies": {}
 }
