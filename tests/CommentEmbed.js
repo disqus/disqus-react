@@ -5,7 +5,7 @@ import { render, cleanup } from '@testing-library/react';
 import { CommentEmbed } from '../src/index.js';
 
 
-const commentConfig = {
+const COMMENT_CONFIG = {
     commentId: '4817304024',
     showMedia: true,
     showParentComment: false,
@@ -30,9 +30,9 @@ const Component = (props) =>
 afterEach(cleanup);
 
 test('Has correct script src', () => {
-    const { getByTestId } = render(<Component {...commentConfig} />);
+    const { getByTestId } = render(<Component {...COMMENT_CONFIG} />);
     // Check the iframe has the correct 'src'
-    const expectedSrc = getExpectedSrc(commentConfig);
+    const expectedSrc = getExpectedSrc(COMMENT_CONFIG);
     expect(getByTestId('comment-embed')).toHaveAttribute('src', expectedSrc);
 });
 
@@ -44,7 +44,7 @@ test('Has correct custom dimensions', () => {
         <Component
             width={customWidth}
             height={customHeight}
-            {...commentConfig}
+            {...COMMENT_CONFIG}
         />
     );
     // Check the correct 'width' is assigned
@@ -57,9 +57,9 @@ test('Has correct classes', () => {
     const { getByTestId } = render(
         <Component
             className='embedded-comment'
-            {...commentConfig}
+            {...COMMENT_CONFIG}
         />
     );
     // Check that the 'className' is assigned to the iframe
-    expect(getByTestId('comment-embed')).toHaveAttribute('class', commentConfig.className);
+    expect(getByTestId('comment-embed')).toHaveAttribute('class', COMMENT_CONFIG.className);
 });
