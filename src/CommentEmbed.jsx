@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// Constants
+import {
+    COMMENT_EMBED_WIDTH,
+    COMMENT_EMBED_HEIGHT,
+} from './constants';
 
-const RADIX_BASE = 36;
 
 export class CommentEmbed extends React.Component {
     getSrc() {
-        const post = Number(this.props.commentId).toString(RADIX_BASE);
+        const radixBase = 36;
+        const post = Number(this.props.commentId).toString(radixBase);
         const parentParam = this.props.showParentComment ? '1' : '0';
         const mediaParam = this.props.showMedia ? '1' : '0';
 
@@ -13,14 +18,17 @@ export class CommentEmbed extends React.Component {
     }
 
     render() {
+        // eslint-disable-next-line no-unused-vars
+        const { width, height, commentId, showMedia, showParentComment, ...rest } = this.props;
         return (
             <iframe
                 src={this.getSrc()}
-                width={this.props.width}
-                height={this.props.height}
-                seamless="seamless"
-                scrolling="no"
-                frameBorder="0"
+                width={width}
+                height={height}
+                seamless='seamless'
+                scrolling='no'
+                frameBorder='0'
+                {...rest}
             />
         );
     }
@@ -29,8 +37,8 @@ export class CommentEmbed extends React.Component {
 CommentEmbed.defaultProps = {
     showMedia: true,
     showParentComment: true,
-    width: 420,
-    height: 320,
+    width: COMMENT_EMBED_WIDTH,
+    height: COMMENT_EMBED_HEIGHT,
 };
 
 CommentEmbed.propTypes = {
@@ -39,4 +47,5 @@ CommentEmbed.propTypes = {
     showParentComment: PropTypes.bool,
     width: PropTypes.number,
     height: PropTypes.number,
+    className: PropTypes.string,
 };
