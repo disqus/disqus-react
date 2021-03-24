@@ -2,6 +2,7 @@ var path = require('path');
 
 
 module.exports = {
+    mode: 'production',
     devtool: 'source-map',
     context: path.resolve(__dirname, '../'),
     entry: ['webpack/hot/dev-server/', './examples/index.jsx'],
