@@ -32,7 +32,7 @@ afterEach(cleanup);
 test('Has correct script src', () => {
     const { getByTestId } = render(<Component {...commentConfig} />);
     // Check the iframe has the correct 'src'
-    const expectedSrc = getExpectedSrc(commentConfig)
+    const expectedSrc = getExpectedSrc(commentConfig);
     expect(getByTestId('comment-embed')).toHaveAttribute('src', expectedSrc);
 });
 
