@@ -1,0 +1,89 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { insertScript, removeScript, shallowComparison } from './utils';
+
+
+export class Recommendations extends React.Component {
+
+    componentDidMount() {
+        this.loadInstance();
+    }
+
+    shouldComponentUpdate(nextProps) {
+        if (this.props === nextProps)
+            return false;
+        return shallowComparison(this.props, nextProps);
+    }
+
+    componentDidUpdate() {
+        this.loadInstance();
+    }
+
+    componentWillUnmount() {
+        this.cleanInstance();
+    }
+
+    getDisqusConfig(config) {
+        return function () {
+            this.page.identifier = config.identifier;
+            this.page.url = config.url;
+            this.page.title = config.title;
+            this.language = config.language;
+        };
+    }
+
+    loadInstance() {
+        if (typeof window !== 'undefined' && window.document) {
+            window.disqus_config = this.getDisqusConfig(this.props.config);
+            if (window.document.getElementById('dsq-recs-scr')) {
+                this.reloadInstance();
+            } else {
+                insertScript(
+                    `https://${this.props.shortname}.disqus.com/recommendations.js`,
+                    'dsq-recs-scr',
+                    window.document.body
+                );
+            }
+        }
+    }
+
+    reloadInstance() {
+        if (window && window.DISQUS_RECOMMENDATIONS) {
+            window.DISQUS_RECOMMENDATIONS.reset({
+                reload: true,
+            });
+        }
+    }
+
+    cleanInstance() {
+        removeScript('dsq-recs-scr', window.document.body);
+        try {
+            delete window.DISQUS_RECOMMENDATIONS;
+        } catch (error) {
+            window.DISQUS_RECOMMENDATIONS = undefined;
+        }
+        const recommendations = window.document.getElementById('disqus_recommendations');
+        if (recommendations) {
+            while (recommendations.hasChildNodes())
+                recommendations.removeChild(recommendations.firstChild);
+        }
+    }
+
+    render() {
+        // eslint-disable-next-line no-unused-vars
+        const { config, ...rest } = this.props;
+        return (
+            <div {...rest} id='disqus_recommendations' />
+        );
+    }
+}
+
+Recommendations.propTypes = {
+    shortname: PropTypes.string.isRequired,
+    config: PropTypes.shape({
+        identifier: PropTypes.string,
+        url: PropTypes.string,
+        title: PropTypes.string,
+        language: PropTypes.string,
+    }),
+};
