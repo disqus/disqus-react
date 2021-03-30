@@ -22,13 +22,13 @@ export class CommentEmbed extends React.Component {
         const { width, height, commentId, showMedia, showParentComment, ...rest } = this.props;
         return (
             <iframe
+                {...rest}
                 src={this.getSrc()}
                 width={width}
                 height={height}
                 seamless='seamless'
                 scrolling='no'
                 frameBorder='0'
-                {...rest}
             />
         );
     }

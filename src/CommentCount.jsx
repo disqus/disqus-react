@@ -56,10 +56,10 @@ export class CommentCount extends React.Component {
         const additionalClass = className ? ` ${className}` : '';
         return (
             <span
+                {...rest}
                 className={`${COMMENT_COUNT_CLASS}${additionalClass}`}
                 data-disqus-identifier={config.identifier}
                 data-disqus-url={config.url}
-                {...rest}
             >
                 {children}
             </span>

@@ -89,7 +89,7 @@ export class DiscussionEmbed extends React.Component {
         // eslint-disable-next-line no-unused-vars
         const { shortname, config, ...rest } = this.props;
         return (
-            <div id={THREAD_ID} {...rest}></div>
+            <div {...rest} id={THREAD_ID} />
         );
     }
 }
