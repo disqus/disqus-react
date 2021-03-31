@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { insertScript, removeScript, shallowComparison } from './utils';
+// Constants
+import {
+    RECOMMENDATIONS_ID,
+    RECOMMENDATIONS_SCRIPT_ID,
+} from './constants';
 
 
 export class Recommendations extends React.Component {
@@ -35,12 +40,12 @@ export class Recommendations extends React.Component {
     loadInstance() {
         if (typeof window !== 'undefined' && window.document) {
             window.disqus_config = this.getDisqusConfig(this.props.config);
-            if (window.document.getElementById('dsq-recs-scr')) {
+            if (window.document.getElementById(RECOMMENDATIONS_SCRIPT_ID)) {
                 this.reloadInstance();
             } else {
                 insertScript(
                     `https://${this.props.shortname}.disqus.com/recommendations.js`,
-                    'dsq-recs-scr',
+                    RECOMMENDATIONS_SCRIPT_ID,
                     window.document.body
                 );
             }
@@ -56,13 +61,13 @@ export class Recommendations extends React.Component {
     }
 
     cleanInstance() {
-        removeScript('dsq-recs-scr', window.document.body);
+        removeScript(RECOMMENDATIONS_SCRIPT_ID, window.document.body);
         try {
             delete window.DISQUS_RECOMMENDATIONS;
         } catch (error) {
             window.DISQUS_RECOMMENDATIONS = undefined;
         }
-        const recommendations = window.document.getElementById('disqus_recommendations');
+        const recommendations = window.document.getElementById(RECOMMENDATIONS_ID);
         if (recommendations) {
             while (recommendations.hasChildNodes())
                 recommendations.removeChild(recommendations.firstChild);
@@ -71,9 +76,9 @@ export class Recommendations extends React.Component {
 
     render() {
         // eslint-disable-next-line no-unused-vars
-        const { config, ...rest } = this.props;
+        const { shortname, config, ...rest } = this.props;
         return (
-            <div {...rest} id='disqus_recommendations' />
+            <div {...rest} id={RECOMMENDATIONS_ID} />
         );
     }
 }
