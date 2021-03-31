@@ -6,21 +6,66 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="stylesheet" type="text/css" href="//media.disquscdn.com/disqus-install-examples/assets/css/kube.min.css" />
         <style>
+            .article,
             .container {
-                margin: auto;
-                max-width: 1128px;
-                padding: 12px;
+                margin: 0;
+                padding: 0;
             }
-            .article {
-                margin: 32px 0;
+            .article-body,
+            .article-list,
+            .button-wrapper {
+                width: 90%;
+                max-width: 1128px;
+                margin: auto;
+            }
+            .container {
+                padding: 2rem 0;
+            }
+            .article-header {
+                width: 100%;
+                max-height: 350px;
+                margin-bottom: 2rem;
+                overflow: hidden;
+            }
+            .article-header img {
+                min-width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+            .page-header {
+                margin: 1rem auto 3rem;
+            }
+            .article-body {
+                margin-bottom: 2rem;
             }
             #disqus_thread {
                 margin-top: 10px;
+            }
+            .article-item {
+                display: flex;
+                flex-direction: row;
+                margin: 32px 0;
+            }
+            .article-item .article-image-wrapper {
+                width: 35%;
+                height: 216px;
+            }
+            .article-item .article-image-wrapper img {
+                min-width: 100%;
+                height: 216px;
+                object-fit: cover;
+            }
+            .article-item .article-preview-wrapper {
+                width: 63%;
+                margin-left: auto;
             }
             .placeholder-box {
                 max-width: 300px;
                 height: 250px;
                 background: #ddd;
+            }
+            .button-wrapper {
+                margin: 4rem auto 2rem;
             }
         </style>
     </head>
