@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { insertScript, removeScript, debounce, shallowComparison } from './utils';
+// Constants
+import {
+    COMMENT_COUNT_CLASS,
+    COMMENT_COUNT_SCRIPT_ID,
+} from './constants';
+
 
 const queueResetCount = debounce(() => {
     if (window.DISQUSWIDGETS)
@@ -24,30 +30,38 @@ export class CommentCount extends React.Component {
         this.loadInstance();
     }
 
+    componentWillUnmount() {
+        this.cleanInstance();
+    }
+
     loadInstance() {
         const doc = window.document;
-        if (doc.getElementById('dsq-count-scr'))
+        if (doc.getElementById(COMMENT_COUNT_SCRIPT_ID))
             queueResetCount();
         else
-            insertScript(`https://${this.props.shortname}.disqus.com/count.js`, 'dsq-count-scr', doc.body);
+            insertScript(`https://${this.props.shortname}.disqus.com/count.js`, COMMENT_COUNT_SCRIPT_ID, doc.body);
     }
 
     cleanInstance() {
-        const body = window.document.body;
-        removeScript('dsq-count-scr', body);
+        const doc = window.document;
+        removeScript(COMMENT_COUNT_SCRIPT_ID, doc.body);
 
         // count.js only reassigns this window object if it's undefined.
         window.DISQUSWIDGETS = undefined;
     }
 
     render() {
+        // eslint-disable-next-line no-unused-vars
+        const { shortname, config, children, className, ...rest } = this.props;
+        const additionalClass = className ? ` ${className}` : '';
         return (
             <span
-                className="disqus-comment-count"
-                data-disqus-identifier={this.props.config.identifier}
-                data-disqus-url={this.props.config.url}
+                {...rest}
+                className={`${COMMENT_COUNT_CLASS}${additionalClass}`}
+                data-disqus-identifier={config.identifier}
+                data-disqus-url={config.url}
             >
-                {this.props.children}
+                {children}
             </span>
         );
     }
@@ -60,4 +74,6 @@ CommentCount.propTypes = {
         url: PropTypes.string,
         title: PropTypes.string,
     }).isRequired,
+    className: PropTypes.string,
+    children: PropTypes.node,
 };

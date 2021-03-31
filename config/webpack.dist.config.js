@@ -1,14 +1,17 @@
 var path = require('path');
 var webpack = require('webpack');
 
+
 module.exports = {
+    mode: 'production',
     devtool: 'source-map',
+    context: path.resolve(__dirname, '../'),
     entry: ['./src/index.js'],
     resolve: {
         extensions: ['.js', '.jsx'],
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve('dist'),
         filename: 'index.js',
         library: 'ReactDisqus',
     },
@@ -18,7 +21,7 @@ module.exports = {
             loader: 'babel-loader',
             exclude: /(node_modules|build)/,
             include: [
-                path.resolve(__dirname, 'src'),
+                path.resolve('src'),
             ],
         }],
     },

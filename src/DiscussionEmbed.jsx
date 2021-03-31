@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { insertScript, removeScript, shallowComparison } from './utils';
+// Constants
+import {
+    CALLBACKS,
+    EMBED_SCRIPT_ID,
+    THREAD_ID,
+} from './constants';
 
-const callbacks = [
-    'preData',
-    'preInit',
-    'onInit',
-    'onReady',
-    'afterRender',
-    'preReset',
-    'onIdentify',
-    'beforeComment',
-    'onNewComment',
-    'onPaginate',
-];
 
 export class DiscussionEmbed extends React.Component {
 
@@ -36,9 +30,13 @@ export class DiscussionEmbed extends React.Component {
         this.loadInstance();
     }
 
+    componentWillUnmount() {
+        this.cleanInstance();
+    }
+
     loadInstance() {
         const doc = window.document;
-        if (window && window.DISQUS && doc.getElementById('dsq-embed-scr')) {
+        if (window && window.DISQUS && doc.getElementById(EMBED_SCRIPT_ID)) {
             window.DISQUS.reset({
                 reload: true,
                 config: this.getDisqusConfig(this.props.config),
@@ -46,13 +44,13 @@ export class DiscussionEmbed extends React.Component {
         } else {
             window.disqus_config = this.getDisqusConfig(this.props.config);
             window.disqus_shortname = this.props.shortname;
-            insertScript(`https://${this.props.shortname}.disqus.com/embed.js`, 'dsq-embed-scr', doc.body);
+            insertScript(`https://${this.props.shortname}.disqus.com/embed.js`, EMBED_SCRIPT_ID, doc.body);
         }
     }
 
     cleanInstance() {
         const doc = window.document;
-        removeScript('dsq-embed-scr', doc.body);
+        removeScript(EMBED_SCRIPT_ID, doc.body);
         if (window && window.DISQUS)
             window.DISQUS.reset({});
 
@@ -61,7 +59,7 @@ export class DiscussionEmbed extends React.Component {
         } catch (error) {
             window.DISQUS = undefined;
         }
-        const disqusThread = doc.getElementById('disqus_thread');
+        const disqusThread = doc.getElementById(THREAD_ID);
         if (disqusThread) {
             while (disqusThread.hasChildNodes())
                 disqusThread.removeChild(disqusThread.firstChild);
@@ -79,7 +77,7 @@ export class DiscussionEmbed extends React.Component {
             if (config.language)
                 this.language = config.language;
 
-            callbacks.forEach(callbackName => {
+            CALLBACKS.forEach(callbackName => {
                 this.callbacks[callbackName] = [
                     config[callbackName],
                 ];
@@ -88,8 +86,10 @@ export class DiscussionEmbed extends React.Component {
     }
 
     render() {
+        // eslint-disable-next-line no-unused-vars
+        const { shortname, config, ...rest } = this.props;
         return (
-            <div {...this.props} id="disqus_thread"></div>
+            <div {...rest} id={THREAD_ID} />
         );
     }
 }
