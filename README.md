@@ -87,6 +87,19 @@ import { CommentEmbed } from 'disqus-react';
 Multiple instances of this component may be include on the same page with different `commentId` variables and does not require that the embedded comment be under the same primary site `shortname`.  
 
 
+### Recommendations  
+
+This component can be used to embed Disqus Recommendations into your page.  
+
+```js
+import { Recommendations } from 'disqus-react';
+
+<Recommendations shortname='example' />
+
+```
+
+This component is limited to one instance in the DOM at a time and will handle updates to both the `config` and `shortname` props and reload appropriately with the new discussion thread.  
+
 ## Contributing  
 
 If you'd like to contribute to this package feel free to submit a bug report, feature request, or pull request. Though we would ask that you first read through the [contributing guidelines](https://github.com/disqus/disqus-react/blob/master/docs/CONTRIBUTING.md).
