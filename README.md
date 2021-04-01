@@ -98,7 +98,7 @@ import { Recommendations } from 'disqus-react';
 
 ```
 
-This component is limited to one instance in the DOM at a time and will handle updates to both the `config` and `shortname` props and reload appropriately with the new discussion thread.  
+This component is limited to one instance in the DOM at a time and will handle updates to the `shortname` prop and reload appropriately with recommended pages for the new forum shortname.  
 
 ## Contributing  
 
