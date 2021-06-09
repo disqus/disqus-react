@@ -49,7 +49,7 @@ This component will display the comment count for the Disqus thread associated w
 ```js
 import { CommentCount } from 'disqus-react';
 
-<Disqus.CommentCount
+<CommentCount
     shortname='example'
     config={
         {
@@ -61,7 +61,7 @@ import { CommentCount } from 'disqus-react';
 >
     {/* Placeholder Text */}
     Comments
-</Disqus.CommentCount>
+</CommentCount>
 ```
 
 Multiple instances of this component can be included on the same page with different `config` variables (e.g. an article list showing the comment count for each).
@@ -94,10 +94,19 @@ This component can be used to embed Disqus Recommendations into your page.
 ```js
 import { Recommendations } from 'disqus-react';
 
-<Recommendations shortname='example' />
+<Recommendations 
+    shortname='example'
+    config={
+        {
+            url: this.props.article.url,
+            identifier: this.props.article.id,
+            title: this.props.article.title,
+        }
+    }
+/>
 
 ```
-
+The `config` prop is optional and is used to prevent any discussions on the current page from being included in the recommendations.
 This component is limited to one instance in the DOM at a time and will handle updates to the `shortname` prop and reload appropriately with recommended pages for the new forum shortname.  
 
 ## Contributing  
