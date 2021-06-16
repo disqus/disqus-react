@@ -1,5 +1,19 @@
 # Change Log
 
+## [1.1.0](https://github.com/disqus/disqus-react/releases/tag/1.1.0)  
+  * Bump elliptic from 6.5.3 to 6.5.4
+  * Added component unit-tests
+  * Bumped ssri from 6.0.1 to 6.0.2
+  * Bumped lodash from 4.17.19 to 4.17.21
+  * Bumped url-parse from 1.4.7 to 1.5.1
+  * Bumped ua-parser-js from 0.7.21 to 0.7.28
+  * Bumped hosted-git-info from 2.8.8 to 2.8.9
+  * Bumped browserslist from 4.12.0 to 4.16.6
+  * Bumped dns-packet from 1.3.1 to 1.3.4
+  * Added `Recommendations` component
+
+----
+
 ## [1.0.11](https://github.com/disqus/disqus-react/releases/tag/1.0.11)  
   * Added React v17.x as peerDependencies
   * Bumped ini from 1.3.5 to 1.3.7
