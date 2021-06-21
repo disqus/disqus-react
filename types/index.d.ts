@@ -4,7 +4,7 @@ interface DisqusConfig {
   url?: string;
   identifier?: string;
   title?: string;
-};
+}
 
 interface DiscussionEmbedConfig extends DisqusConfig {
   categoryID?: string;
@@ -20,18 +20,18 @@ interface DiscussionEmbedConfig extends DisqusConfig {
   beforeComment?: (...args: any[]) => any;
   onNewComment?: (...args: any[]) => any;
   onPaginate?: (...args: any[]) => any;
-};
+}
 
 interface DiscussionEmbedProps {
   shortname: string;
   config: DiscussionEmbedConfig;
-};
+}
 
 interface CommentCountProps extends DiscussionEmbedProps {
-  shortname: string,
+  shortname: string;
   config: DisqusConfig;
   children?: React.ReactNode;
-};
+}
 
 interface CommentEmbedProps {
   commentId: string;
@@ -39,22 +39,17 @@ interface CommentEmbedProps {
   showMedia?: boolean;
   width?: number;
   height?: number;
-};
-
-interface IDisqus {
-  CommentCount: React.Component<CommentCountProps, {}>;
-  CommentEmbed: React.Component<CommentEmbedProps, {}>;
-  DiscussionEmbed: React.Component<DiscussionEmbedProps, {}>;
-};
+}
 
 declare class CommentCount extends React.Component<CommentCountProps, {}> {}
 declare class CommentEmbed extends React.Component<CommentEmbedProps, {}> {}
 declare class DiscussionEmbed extends React.Component<DiscussionEmbedProps, {}> {}
+
 declare const Disqus: {
   CommentCount: React.ComponentType<CommentCountProps>;
   CommentEmbed: React.ComponentType<CommentEmbedProps>;
   DiscussionEmbed: React.ComponentType<DiscussionEmbedProps>;
-};
+}
 
 export { CommentCount, CommentEmbed, DiscussionEmbed };
 export default Disqus;
