@@ -41,15 +41,22 @@ interface CommentEmbedProps {
   height?: number;
 }
 
+interface RecommendationsProps {
+  shortname: string;
+  config: DisqusConfig;
+}
+
 declare class CommentCount extends React.Component<CommentCountProps, {}> {}
 declare class CommentEmbed extends React.Component<CommentEmbedProps, {}> {}
 declare class DiscussionEmbed extends React.Component<DiscussionEmbedProps, {}> {}
+declare class Recommendations extends React.Component<RecommendationsProps, {}> {}
 
 declare const Disqus: {
   CommentCount: React.ComponentType<CommentCountProps>;
   CommentEmbed: React.ComponentType<CommentEmbedProps>;
   DiscussionEmbed: React.ComponentType<DiscussionEmbedProps>;
+  Recommendations: React.Component<RecommendationsProps, {}>;
 }
 
-export { CommentCount, CommentEmbed, DiscussionEmbed };
+export { CommentCount, CommentEmbed, DiscussionEmbed, Recommendations };
 export default Disqus;
