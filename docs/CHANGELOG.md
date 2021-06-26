@@ -1,7 +1,14 @@
 # Change Log
 
+## [1.1.1](https://github.com/disqus/disqus-react/releases/tag/1.1.1)  
+  * Bumped ws from 5.2.2 to 5.2.3
+  * Added type definitions for the `Recommendations` component
+  * Fixed (#82) - Statements not allowed in ambient contexts error
+
+----
+
 ## [1.1.0](https://github.com/disqus/disqus-react/releases/tag/1.1.0)  
-  * Bump elliptic from 6.5.3 to 6.5.4
+  * Bumped elliptic from 6.5.3 to 6.5.4
   * Added component unit-tests
   * Bumped ssri from 6.0.1 to 6.0.2
   * Bumped lodash from 4.17.19 to 4.17.21
