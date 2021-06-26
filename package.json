@@ -1,6 +1,6 @@
 {
   "name": "disqus-react",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Official React components to embed Disqus discussions and comments.",
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
     "build:dist": "webpack --config config/webpack.dist.config.js --progress --colors && uglifyjs dist/index.js -cm -o dist/index.min.js --source-map content=dist/index.js.map,url=index.min.js.map",
     "build:babel": "babel src --out-dir lib",
     "build": "npm run build:example && npm run build:dist && npm run build:babel",
+    "lint": "eslint src/* tests/*",
     "test": "jest --config=./config/jest.config.js",
     "prepublish": "npm run build",
     "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{ print $2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]') && git tag v$PACKAGE_VERSION && git push --tags"
