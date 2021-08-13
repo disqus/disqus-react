@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { insertScript, removeScript, shallowComparison } from './utils';
+import {
+    insertScript,
+    removeScript,
+    shallowComparison,
+    removeResources,
+} from './utils';
 // Constants
 import {
     RECOMMENDATIONS_ID,
@@ -72,6 +77,7 @@ export class Recommendations extends React.Component {
             while (recommendations.hasChildNodes())
                 recommendations.removeChild(recommendations.firstChild);
         }
+        removeResources();
     }
 
     render() {
