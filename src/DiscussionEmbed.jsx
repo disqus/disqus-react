@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { insertScript, removeScript, shallowComparison } from './utils';
+import {
+    insertScript,
+    removeResources,
+    removeScript,
+    shallowComparison,
+} from './utils';
 // Constants
 import {
     CALLBACKS,
@@ -64,6 +69,7 @@ export class DiscussionEmbed extends React.Component {
             while (disqusThread.hasChildNodes())
                 disqusThread.removeChild(disqusThread.firstChild);
         }
+        removeResources();
     }
 
     getDisqusConfig(config) {

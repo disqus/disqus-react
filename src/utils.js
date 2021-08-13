@@ -16,6 +16,14 @@ export function removeScript(id, parentElement) {
         parentElement.removeChild(script);
 }
 
+export function removeResources() {
+    // Remove the bundles that the Disqus embed.js adds to prevent duplicated resources
+    const disqusResources = window.document.querySelectorAll(
+        'link[href*="disquscdn.com/next/embed"], link[href*="disqus.com/next/config.js"], script[src*="disquscdn.com/next/embed"], script[src*="disqus.com/count-data.js"]'
+    );
+    disqusResources.forEach(el => el.remove());
+}
+
 export function debounce(func, wait, runOnFirstCall) {
     let timeout;
     return function () {
