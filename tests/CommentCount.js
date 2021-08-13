@@ -80,6 +80,9 @@ test('Cleans script and window attributes on unmount', () => {
     const scriptQuery = baseElement.querySelectorAll(`#${COMMENT_COUNT_SCRIPT_ID}`);
     // Make sure the script is removed
     expect(scriptQuery.length).toEqual(0);
+    // Make sure the resources created by the count script are removed
+    const resourcesQuery = baseElement.querySelectorAll('script[src*="disqus.com/count-data.js"]');
+    expect(resourcesQuery.length).toEqual(0);
     // Make sure window.DISQUSWIDGETS is removed
     expect(global.window.DISQUSWIDGETS).toBeUndefined();
 });

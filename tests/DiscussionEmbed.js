@@ -52,8 +52,11 @@ test('Cleans script and window attributes on unmount', () => {
     const { baseElement, unmount } = render(<Component config={DISQUS_CONFIG} />);
     unmount();
     const scriptQuery = baseElement.querySelectorAll(`#${EMBED_SCRIPT_ID}`);
-    // Make sure the script is removed
+    // Make sure the embed script is removed
     expect(scriptQuery.length).toEqual(0);
+    // Make sure the resources created by the embed script are removed
+    const resourcesQuery = baseElement.querySelectorAll('link[href*="disquscdn.com/next/embed"], link[href*="disqus.com/next/config.js"], script[src*="disquscdn.com/next/embed"]');
+    expect(resourcesQuery.length).toEqual(0);
     // Make sure window.DISQUS is removed
     expect(global.window.DISQUS).toBeUndefined();
 });
