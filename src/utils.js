@@ -20,7 +20,7 @@ export function removeResources() {
     // Remove the bundles that the Disqus scripts add to prevent duplicated resources when navigating between pages
     const disqusResources = window.document.querySelectorAll(
         // eslint-disable-next-line max-len
-        'link[href*="disquscdn.com/next/embed"], link[href*="disquscdn.com/next/recommendations"], link[href*="disqus.com/next/config.js"], script[src*="disquscdn.com/next/embed"], script[src*="disqus.com/count-data.js"]'
+        'link[href*="disquscdn.com/next/embed"], link[href*="disquscdn.com/next/recommendations"], link[href*="disqus.com/next/config.js"], script[src*="disquscdn.com/next/embed"], script[src*="disqus.com/count-data.js"], iframe[title="Disqus"]'
     );
     disqusResources.forEach(el => el.remove());
 }
