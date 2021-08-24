@@ -1,5 +1,13 @@
 # Change Log
 
+## [1.1.2](https://github.com/disqus/disqus-react/releases/tag/1.1.2)  
+  * Added CI with GitHub Actions
+  * Bumped path-parse from 1.0.6 to 1.0.7
+  * Bumped url-parse from 1.5.1 to 1.5.3
+  * Added function to cleanup additional resources on unmount
+
+----
+
 ## [1.1.1](https://github.com/disqus/disqus-react/releases/tag/1.1.1)  
   * Bumped ws from 5.2.2 to 5.2.3
   * Added type definitions for the `Recommendations` component
