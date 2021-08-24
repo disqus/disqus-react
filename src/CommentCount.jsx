@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { insertScript, removeScript, debounce, shallowComparison } from './utils';
+import {
+    insertScript,
+    removeScript,
+    debounce,
+    shallowComparison,
+    removeResources,
+} from './utils';
 // Constants
 import {
     COMMENT_COUNT_CLASS,
@@ -48,6 +54,7 @@ export class CommentCount extends React.Component {
 
         // count.js only reassigns this window object if it's undefined.
         window.DISQUSWIDGETS = undefined;
+        removeResources();
     }
 
     render() {

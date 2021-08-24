@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { DiscussionEmbed, CommentCount, CommentEmbed, Recommendations } from 'disqus-react';
+import { DiscussionEmbed, CommentCount, CommentEmbed } from 'disqus-react';
 
 /* eslint-disable max-len */
 const ARTICLES = {
@@ -114,7 +114,6 @@ class Article extends React.Component {
                 <div className="article-body">
                     <h1>{data.title}</h1>
                     <p>{data.body}</p>
-                    <Recommendations shortname={this.props.disqusShortname} />
                     <DiscussionEmbed shortname={this.props.disqusShortname} config={threadConfig} />
                 </div>
             </div>
@@ -148,12 +147,28 @@ class App extends React.Component {
         });
     }
 
+    navigateHome() {
+        this.setState({
+            articleId: null,
+        });
+    }
+
     render() {
         return (
             <div className="container">
                 {this.state.articleId ?
-                    <Article id={this.state.articleId} disqusShortname={this.state.disqusShortname} />
-                    : <Home disqusShortname={this.state.disqusShortname} />
+                    <div>
+                        <Article
+                            id={this.state.articleId}
+                            disqusShortname={this.state.disqusShortname}
+                        />
+                        <div className="button-wrapper">
+                            <button onClick={this.navigateHome.bind(this)}>Back</button>
+                        </div>
+                    </div>
+                    : <Home
+                        disqusShortname={this.state.disqusShortname}
+                    />
                 }
                 <div className="button-wrapper">
                     <button onClick={this.changeShortname.bind(this)}>Change shortname</button>
