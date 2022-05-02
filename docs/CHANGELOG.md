@@ -1,5 +1,10 @@
 # Change Log
 
+## [1.1.3](https://github.com/disqus/disqus-react/releases/tag/1.1.2)  
+  * Added React v18 support
+
+----
+
 ## [1.1.2](https://github.com/disqus/disqus-react/releases/tag/1.1.2)  
   * Added CI with GitHub Actions
   * Bumped path-parse from 1.0.6 to 1.0.7
