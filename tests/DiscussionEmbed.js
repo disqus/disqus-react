@@ -17,6 +17,18 @@ const DISQUS_CONFIG = {
     identifier: 'tester',
 };
 
+// This is the SSO config that is used on the Disqus SSO example found here: https://disqus-sso-demo.glitch.me/
+const SSO_CONFIG = {
+    name: 'SampleNews',
+    button: 'http://example.com/images/samplenews.gif',
+    icon: 'http://example.com/favicon.png',
+    url: 'http://example.com/login/',
+    logout: 'http://example.com/logout/',
+    profile_url: 'http://example.com/profileUrlTemplate/{username}',
+    width: '800',
+    height: '400',
+};
+
 const Component = (props) =>
     <DiscussionEmbed
         data-testid='disqus-thread'
@@ -39,12 +51,28 @@ test('Creates window.disqus_config', () => {
     expect(global.window.disqus_config).toBeTruthy();
 });
 
+test('Creates window.disqus_config when passed an SSO config', () => {
+    const TEST_CONFIG = DISQUS_CONFIG;
+    TEST_CONFIG.sso = SSO_CONFIG;
+    render(<Component config={TEST_CONFIG} />);
+    expect(global.window.disqus_config).toBeTruthy();
+});
+
 test('Inserts the script correctly', () => {
     const { baseElement } = render(<Component config={DISQUS_CONFIG} />);
     const scriptQuery = baseElement.querySelectorAll(`#${EMBED_SCRIPT_ID}`);
     // Make sure only one script is inserted
     expect(scriptQuery.length).toEqual(1);
     // Check that the script src is set correctly
+    expect(scriptQuery[0].src).toEqual('https://testing.disqus.com/embed.js');
+});
+
+test('Inserts the script correctly when passed an SSO config', () => {
+    const TEST_CONFIG = DISQUS_CONFIG;
+    TEST_CONFIG.sso = SSO_CONFIG;
+    const { baseElement } = render(<Component config={TEST_CONFIG}/>);
+    const scriptQuery = baseElement.querySelectorAll(`#${EMBED_SCRIPT_ID}`);
+    expect(scriptQuery.length).toEqual(1);
     expect(scriptQuery[0].src).toEqual('https://testing.disqus.com/embed.js');
 });
 
@@ -55,6 +83,7 @@ test('Cleans script and window attributes on unmount', () => {
     // Make sure the embed script is removed
     expect(scriptQuery.length).toEqual(0);
     // Make sure the resources created by the embed script are removed
+    // eslint-disable-next-line max-len
     const resourcesQuery = baseElement.querySelectorAll('link[href*="disquscdn.com/next/embed"], link[href*="disqus.com/next/config.js"], script[src*="disquscdn.com/next/embed"]');
     expect(resourcesQuery.length).toEqual(0);
     // Make sure window.DISQUS is removed
