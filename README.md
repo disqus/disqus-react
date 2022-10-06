@@ -41,6 +41,35 @@ import { DiscussionEmbed } from 'disqus-react';
 
 This component is limited to one instance in the DOM at a time and will handle updates to both the `config` and `shortname` props and reload appropriately with the new discussion thread.  
 
+### DiscussionEmbed with SSO
+
+This is an example for setting up the DiscussionEmbed component with SSO.  This example config is also used on the Disqus SSO example found here: https://disqus-sso-demo.glitch.me/.
+
+```js
+import { DiscussionEmbed } from 'disqus-react';
+
+<DiscussionEmbed
+    shortname='example'
+    config={
+        {
+            url: this.props.article.url,
+            identifier: this.props.article.id,
+            title: this.props.article.title,
+            language: 'zh_TW' //e.g. for Traditional Chinese (Taiwan),
+            sso: {
+                name: 'SampleNews',
+                button: 'http://example.com/images/samplenews.gif',
+                icon: 'http://example.com/favicon.png',
+                url: 'http://example.com/login/',
+                logout: 'http://example.com/logout/',
+                profile_url: 'http://example.com/profileUrlTemplate/{username}',
+                width: '800',
+                height: '400',
+            }
+        }
+    }
+/>
+```
 
 ### CommentCount  
 
