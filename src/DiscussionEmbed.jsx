@@ -80,6 +80,8 @@ export class DiscussionEmbed extends React.Component {
             this.page.category_id = config.categoryID;
             this.page.remote_auth_s3 = config.remoteAuthS3;
             this.page.api_key = config.apiKey;
+            if (config.sso)
+                this.sso = config.sso;
             if (config.language)
                 this.language = config.language;
 
@@ -120,5 +122,15 @@ DiscussionEmbed.propTypes = {
         beforeComment: PropTypes.func,
         onNewComment: PropTypes.func,
         onPaginate: PropTypes.func,
+        sso: PropTypes.shape({
+            name: PropTypes.string,
+            button: PropTypes.string,
+            icon: PropTypes.string,
+            url: PropTypes.string,
+            logout: PropTypes.string,
+            profile_url: PropTypes.string,
+            width: PropTypes.string,
+            height: PropTypes.string,
+        }),
     }).isRequired,
 };
