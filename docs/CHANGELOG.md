@@ -3,6 +3,8 @@
 ## [1.1.4](https://github.com/disqus/disqus-react/releases/tag/v1.1.4)
   * Added SSO support for DiscussionEmbed
 
+----
+
 ## [1.1.3](https://github.com/disqus/disqus-react/releases/tag/1.1.2)  
   * Added React v18 support
 
