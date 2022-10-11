@@ -55,7 +55,7 @@ import { DiscussionEmbed } from 'disqus-react';
             url: this.props.article.url,
             identifier: this.props.article.id,
             title: this.props.article.title,
-            language: 'zh_TW' //e.g. for Traditional Chinese (Taiwan),
+            language: 'zh_TW', //e.g. for Traditional Chinese (Taiwan)
             sso: {
                 name: 'SampleNews',
                 button: 'http://example.com/images/samplenews.gif',
