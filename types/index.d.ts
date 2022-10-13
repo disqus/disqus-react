@@ -9,6 +9,17 @@ interface DisqusConfig {
 interface DiscussionEmbedConfig extends DisqusConfig {
   categoryID?: string;
   language?: string;
+  apiKey?: string;
+  sso?: {
+    name?: string;
+    button?: string;
+    icon?: string;
+    url?: string;
+    logout?: string;
+    profile_url?: string;
+    width?: string;
+    height?: string;
+  };
   // Callbacks
   preData?: (...args: any[]) => any;
   preInit?: (...args: any[]) => any;
