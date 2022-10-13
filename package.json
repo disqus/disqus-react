@@ -1,6 +1,6 @@
 {
   "name": "disqus-react",
-  "version": "1.1.4.1",
+  "version": "1.1.5",
   "description": "Official React components to embed Disqus discussions and comments.",
   "repository": {
     "type": "git",
