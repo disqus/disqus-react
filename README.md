@@ -56,6 +56,7 @@ import { DiscussionEmbed } from 'disqus-react';
             identifier: this.props.article.id,
             title: this.props.article.title,
             language: 'zh_TW', //e.g. for Traditional Chinese (Taiwan)
+            apiKey: '',
             sso: {
                 name: 'SampleNews',
                 button: 'http://example.com/images/samplenews.gif',
