@@ -56,6 +56,7 @@ import { DiscussionEmbed } from 'disqus-react';
             identifier: this.props.article.id,
             title: this.props.article.title,
             language: 'zh_TW', //e.g. for Traditional Chinese (Taiwan)
+            remoteAuthS3: '',
             apiKey: '',
             sso: {
                 name: 'SampleNews',
