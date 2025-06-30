@@ -43,7 +43,7 @@ This component is limited to one instance in the DOM at a time and will handle u
 
 ### DiscussionEmbed with SSO
 
-This is an example for setting up the DiscussionEmbed component with SSO.  This example config is also used on the Disqus React SSO example found here: https://disqus-sso-react-demo.glitch.me/.
+This is an example for setting up the DiscussionEmbed component with SSO.  This example config is also used on the Disqus React SSO example found here: https://disqus-sso-react-demo.glitch.me/.  Note: The `config.sso` object is not required for publishers integrating SSO only because `config.sso` is only used when the SSO login is present alongside the Disqus login.
 
 ```js
 import { DiscussionEmbed } from 'disqus-react';
