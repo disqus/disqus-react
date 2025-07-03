@@ -6,6 +6,8 @@ The following is a set of guidelines for contributing to Disqus and its packages
 
 #### Table Of Contents
 
+[Development Setup](#development-setup)
+
 [Code of Conduct](#code-of-conduct)
 
 [I don't want to read this whole thing, I just have a question!!!](#i-dont-want-to-read-this-whole-thing-i-just-have-a-question)
@@ -25,6 +27,37 @@ The following is a set of guidelines for contributing to Disqus and its packages
 
 [Additional Notes](#additional-notes)
   * [Issue and Pull Request Labels](#issue-and-pull-request-labels)
+
+## Development Setup
+
+### Prerequisites
+- Node.js 16.20.2 (If you have `nvm` installed, you can use `nvm use` to switch to the correct version)
+- npm (recommended) or yarn
+
+### Getting Started
+
+1. Clone the repository:
+```bash
+git clone https://github.com/disqus/disqus-react.git
+cd disqus-react
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start development:
+```bash
+npm start
+```
+
+This will start a development server (usually at port http://localhost:8080).  You can then navigate to http://localhost:8080/examples where you can view and test the Disqus React components with hot reloading.
+
+4. Run tests:
+```bash
+npm test
+```
 
 ## Code of Conduct
 
