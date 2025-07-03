@@ -9,6 +9,7 @@ interface DisqusConfig {
 interface DiscussionEmbedConfig extends DisqusConfig {
   categoryID?: string;
   language?: string;
+  remoteAuthS3?: string;
   apiKey?: string;
   sso?: {
     name?: string;

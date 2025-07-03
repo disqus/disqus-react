@@ -17,7 +17,13 @@ const DISQUS_CONFIG = {
     identifier: 'tester',
 };
 
-// This is the SSO config that is used on the Disqus SSO example found here: https://disqus-sso-demo.glitch.me/
+const DISQUS_CONFIG_WITH_SSO_AUTH = {
+    ...DISQUS_CONFIG,
+    remoteAuthS3: 'remoteAuthS3String',
+    apiKey: 'apiKeyString',
+};
+
+// This config is only used when the SSO login is present alongside the Disqus login.
 const SSO_CONFIG = {
     name: 'SampleNews',
     button: 'http://example.com/images/samplenews.gif',
@@ -52,8 +58,7 @@ test('Creates window.disqus_config', () => {
 });
 
 test('Creates window.disqus_config when passed an SSO config', () => {
-    const TEST_CONFIG = DISQUS_CONFIG;
-    TEST_CONFIG.sso = SSO_CONFIG;
+    const TEST_CONFIG = { ...DISQUS_CONFIG, sso: SSO_CONFIG };
     render(<Component config={TEST_CONFIG} />);
     expect(global.window.disqus_config).toBeTruthy();
 });
@@ -67,9 +72,16 @@ test('Inserts the script correctly', () => {
     expect(scriptQuery[0].src).toEqual('https://testing.disqus.com/embed.js');
 });
 
-test('Inserts the script correctly when passed an SSO config', () => {
-    const TEST_CONFIG = DISQUS_CONFIG;
-    TEST_CONFIG.sso = SSO_CONFIG;
+test('Inserts the script correctly when passed a remoteAuthS3 string and API Key with an SSO config', () => {
+    const TEST_CONFIG = { ...DISQUS_CONFIG_WITH_SSO_AUTH, sso: SSO_CONFIG };
+    const { baseElement } = render(<Component config={TEST_CONFIG}/>);
+    const scriptQuery = baseElement.querySelectorAll(`#${EMBED_SCRIPT_ID}`);
+    expect(scriptQuery.length).toEqual(1);
+    expect(scriptQuery[0].src).toEqual('https://testing.disqus.com/embed.js');
+});
+
+test('Inserts the script correctly when passed a remoteAuthS3 string and API Key without an SSO config', () => {
+    const TEST_CONFIG = DISQUS_CONFIG_WITH_SSO_AUTH;
     const { baseElement } = render(<Component config={TEST_CONFIG}/>);
     const scriptQuery = baseElement.querySelectorAll(`#${EMBED_SCRIPT_ID}`);
     expect(scriptQuery.length).toEqual(1);
